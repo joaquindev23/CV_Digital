@@ -1,24 +1,21 @@
 #!/bin/bash
-chmod +x setup.sh
 
 # Crear directorio .streamlit si no existe
 mkdir -p ~/.streamlit/
 
 # Crear archivo de configuración para Streamlit
-echo "\
-[server]\n\
-headless = true\n\
-enableCORS=false\n\
-port = $PORT\n\
-[theme]\n\
-primaryColor = '#d33682'\n\
-backgroundColor = '#002b36'\n\
-secondaryBackgroundColor = '#586e75'\n\
-textColor = '#fff'\n\
-" > ~/.streamlit/config.toml
+cat > ~/.streamlit/config.toml << EOL
+[server]
+headless = true
+enableCORS = false
+port = $PORT
 
-# Instalar dependencias (puedes agregar más aquí si es necesario)
+[theme]
+primaryColor = "#d33682"
+backgroundColor = "#002b36"
+secondaryBackgroundColor = "#586e75"
+textColor = "#fff"
+EOL
+
+# Instalar dependencias
 pip install -r requirements.txt
-
-# Ejecución de Streamlit en el puerto especificado (default es 8501 si no se pasa PORT)
-streamlit run app.py
