@@ -1,4 +1,5 @@
 #!/bin/bash
+chmod +x setup.sh
 
 # Crear directorio .streamlit si no existe
 mkdir -p ~/.streamlit/
